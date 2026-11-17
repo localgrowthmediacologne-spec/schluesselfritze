@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Schutz vor Suchmaschinen-Indexierung (Demo-Version) -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Design-Entwurf · Schlüsselfritze – Schlüsseldienst &amp; Sicherheitstechnik Köln</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .page-view {
+            animation: fadeIn 0.25s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dezentes Sicherheits-Raster im Hero */
+        .hero-pattern {
+            background-image: radial-gradient(rgba(217, 119, 6, 0.16) 1px, transparent 1px);
+            background-size: 26px 26px;
+        }
+
+        /* Laufband für Leistungsschwerpunkte */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-800 antialiased selection:bg-red-700 selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Gut sichtbarer Demo-Hinweis-Balken ganz oben -->
+    <div class="bg-amber-400 text-zinc-950 text-xs md:text-sm font-extrabold py-2.5 px-4 text-center border-b border-amber-500 shadow-xs z-50">
+        🎨 UNVERBINDLICHER DESIGN-ENTWURF · Demoseite erstellt von Local Growth Media (Keine aktive Unternehmenswebsite)
+    </div>
+
+    <!-- 2. Top-Kontaktleiste (Direktwahl, E-Mail & Einsatzzeiten sofort sichtbar) -->
+    <div class="bg-zinc-950 text-zinc-200 text-xs font-medium py-2 px-4 border-b border-white/10">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <span class="text-zinc-300">🔑 Kölner Sicherheitsfachgeschäft · Hahnenstr. 14, 50667 Köln</span>
+            <div class="flex items-center gap-4">
+                <a href="tel:+4922164000435" class="text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1.5">
+                    <span>📞 0221 / 64000435</span>
+                </a>
+                <a href="mailto:hallo@schluesselfritze.de" class="hidden sm:inline-flex text-zinc-300 hover:text-white font-medium items-center gap-1.5">
+                    <span>✉️ hallo@schluesselfritze.de</span>
+                </a>
+                <span class="hidden md:inline text-zinc-400">🕒 Notdienst täglich 06:00–22:00 Uhr</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Hauptnavigation (Anthrazit + Signalrot + Messing-Gold) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/90 shadow-2xs">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
+            <!-- Schlüsselfritze Marken-Logo -->
+            <button type="button" onclick="navigateTo('home')" class="flex items-center gap-3 text-left group cursor-pointer">
+                <div class="relative w-11 h-11 rounded-xl bg-zinc-900 border-2 border-red-700 text-white flex items-center justify-center font-extrabold text-base tracking-tight shadow-sm group-hover:scale-[1.02] transition shrink-0">
+                    <span>SF</span>
+                    <span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-amber-400 text-zinc-950 text-[10px] font-black flex items-center justify-center shadow-2xs">🔑</span>
+                </div>
+                <div>
+                    <span class="text-sm md:text-base font-extrabold text-zinc-900 block leading-tight tracking-tight">
+                        SCHLÜSSELFRITZE <span class="text-red-700">Köln</span>
+                    </span>
+                    <span class="text-[11px] font-semibold text-zinc-500 block">
+                        Schlüsseldienst, Einbruchschutz &amp; Schließanlagen
+                    </span>
+                </div>
+            </button>
+
+            <!-- Desktop-Navigation -->
+            <nav class="hidden lg:flex items-center gap-1 bg-zinc-100 p-1 rounded-xl border border-zinc-200/80">
+                <button type="button" onclick="navigateTo('home')" data-nav="home" class="nav-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-red-700 text-white shadow-2xs cursor-pointer">
+                    Startseite
+                </button>
+                <button type="button" onclick="navigateTo('leistungen')" data-nav="leistungen" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-zinc-700 hover:text-zinc-950 transition cursor-pointer">
+                    Leistungen
+                </button>
+                <button type="button" onclick="navigateTo('ueber-uns')" data-nav="ueber-uns" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-zinc-700 hover:text-zinc-950 transition cursor-pointer">
+                    Über uns &amp; Festpreise
+                </button>
+                <button type="button" onclick="navigateTo('kontakt')" data-nav="kontakt" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-zinc-700 hover:text-zinc-950 transition cursor-pointer">
+                    Kontakt
+                </button>
+            </nav>
+
+            <!-- Direkter Telefon-Button im Header -->
+            <a href="tel:+4922164000435" class="bg-red-700 hover:bg-red-800 text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                <span>📞</span>
+                <span>0221 / 64000435</span>
+            </a>
+        </div>
+
+        <!-- Mobile Unterseiten-Leiste -->
+        <div class="lg:hidden border-t border-zinc-200 bg-zinc-50 px-2 py-1.5 flex justify-around text-xs font-semibold overflow-x-auto">
+            <button type="button" onclick="navigateTo('home')" data-nav-mob="home" class="mob-nav-btn px-3 py-1.5 rounded-lg text-white bg-red-700 shadow-2xs">Start</button>
+            <button type="button" onclick="navigateTo('leistungen')" data-nav-mob="leistungen" class="mob-nav-btn px-3 py-1.5 rounded-lg text-zinc-600">Leistungen</button>
+            <button type="button" onclick="navigateTo('ueber-uns')" data-nav-mob="ueber-uns" class="mob-nav-btn px-3 py-1.5 rounded-lg text-zinc-600">Über uns</button>
+            <button type="button" onclick="navigateTo('kontakt')" data-nav-mob="kontakt" class="mob-nav-btn px-3 py-1.5 rounded-lg text-zinc-600">Kontakt</button>
+        </div>
+    </header>
+
+    <!-- HAUPTINHALT -->
+    <main class="flex-1">
+
+        <!-- ========================================================= -->
+        <!-- UNTERSEITE 1: STARTSEITE (MIT DIREKTER KONTAKT-BOX OBEN)  -->
+        <!-- ========================================================= -->
+        <div id="view-home" class="page-view">
+
+            <!-- HERO SECTION: Links Vertrauens-Pitch, Rechts SOFORT SICHTBARE Kontakt- & Projekt-Anfrage-Box -->
+            <section class="relative bg-gradient-to-br from-zinc-950 via-zinc-900 to-stone-900 text-white pt-10 pb-14 md:pt-14 md:pb-16 px-4 overflow-hidden hero-pattern">
+                <!-- Dezente Kölner Skyline-Silhouette im Hintergrund -->
+                <svg class="absolute bottom-0 inset-x-0 w-full h-28 text-white/[0.03] pointer-events-none" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
+                    <path d="M0,120 L0,95 L80,95 L80,70 L110,70 L110,95 L180,95 L180,55 L192,20 L204,55 L212,20 L224,55 L224,95 L320,95 Q420,45 520,95 L620,95 L620,65 L680,65 L680,95 L820,95 Q920,50 1020,95 L1200,95 L1200,120 Z"/>
+                </svg>
+
+                <div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+                    <!-- Linke Spalte: Positionierung & Vertrauenssignale -->
+                    <div class="lg:col-span-6 pt-2">
+                        <!-- Zertifizierungs- & Google-Rating-Badge -->
+                        <div class="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-xs border border-white/15 rounded-full px-4 py-1.5 text-xs font-semibold mb-5">
+                            <span class="text-amber-400 text-sm">★★★★★</span>
+                            <span class="text-white font-bold">148+ Bewertungen</span>
+                            <span class="text-zinc-300">· Seit 2014 verbraucherschutz.de zertifiziert</span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.12] mb-5">
+                            Ihr Kölner Fachbetrieb für <span class="text-amber-400">Einbruchschutz</span>, <span class="text-red-500">Schließanlagen</span> &amp; Türöffnung.
+                        </h1>
+
+                        <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-7">
+                            Über 30 Jahre Erfahrung in mechanischer Sicherheitstechnik, Schließanlagen, Panzerriegeln, Tresoren und fairen Festpreis-Türöffnungen im gesamten Kölner Stadtgebiet – direkt von der Hahnenstraße.
+                        </p>
+
+                        <!-- Direkte Vorteile als kompakte Checkliste -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-7 text-sm">
+                            <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Türöffnung ab 89 € Festpreis</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Panzerriegel &amp; Einbruchschutz</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Schließanlagen &amp; Tresore</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">100 % fest angestellte Profis</span>
+                            </div>
+                        </div>
+
+                        <!-- Sofort-Anruf & E-Mail ohne Umwege -->
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="tel:+4922164000435" class="bg-red-700 text-white hover:bg-red-600 font-extrabold px-5 py-3.5 rounded-xl text-sm transition shadow-md inline-flex items-center gap-2">
+                                <span>📞 Direkt anrufen: 0221 / 64000435</span>
+                            </a>
+                            <a href="mailto:hallo@schluesselfritze.de" class="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-5 py-3.5 rounded-xl text-sm transition">
+                                ✉️ hallo@schluesselfritze.de
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Rechte Spalte: DIREKT SICHTBARE KONTAKT- & SCHNELL-KALKULATOR-KARTE -->
+                    <div class="lg:col-span-6">
+                        <div class="bg-white text-zinc-900 rounded-3xl p-5 sm:p-7 shadow-2xl border border-zinc-200/80">
+                            <div class="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-zinc-100">
+                                <div>
+                                    <span class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider text-red-700">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        Sicherheits- &amp; Festpreis-Rechner
+                                    </span>
+                                    <h2 class="text-lg sm:text-xl font-extrabold text-zinc-900 mt-0.5">
+                                        Unverbindlichen Richtpreis &amp; Termin anfragen
+                                    </h2>
+                                </div>
+                            </div>
+
+                            <!-- Direkt sichtbare Schnell-Auswahl + Live-Preisindikation -->
+                            <form id="heroDirectForm" class="space-y-4">
+                                <input type="hidden" name="access_key" value="DEIN_WEB3FORMS_KEY">
+                                <input type="hidden" name="subject" value="Neue Sicherheits-Anfrage - Schlüsselfritze Köln">
+                                <input type="hidden" id="heroCalcSummary" name="kalkulation">
+
+                                <!-- 1. Leistungsbereich als direkte Schnellwahl-Buttons -->
+                                <div>
+                                    <label class="block text-xs font-bold text-zinc-700 mb-1.5">Wobei können wir Ihnen helfen?</label>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button type="button" onclick="setHeroService('Einbruchschutz & Panzerriegel', 199, this)" class="hero-srv-btn border-2 border-red-700 bg-red-50 text-red-950 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                                            <span class="block text-xs font-extrabold">🛡️ Einbruchschutz</span>
+                                        </button>
+                                        <button type="button" onclick="setHeroService('Schließanlage & Schlosstausch', 95, this)" class="hero-srv-btn border border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-red-400 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                                            <span class="block text-xs font-extrabold">🔐 Schließanlage</span>
+                                        </button>
+                                        <button type="button" onclick="setHeroService('Tresor / Nachschlüssel', 140, this)" class="hero-srv-btn border border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-red-400 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                                            <span class="block text-xs font-extrabold">🗄️ Tresor / Service</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Umfang-Slider mit Live-Richtwert -->
+                                <div class="bg-zinc-50 border border-zinc-200/90 rounded-2xl p-3.5">
+                                    <div class="flex items-center justify-between text-xs mb-1.5">
+                                        <span class="font-bold text-zinc-700">Umfang: <strong id="heroScopeVal" class="text-red-700">2 Türen / Zylinder</strong></span>
+                                        <span class="font-extrabold text-zinc-900 bg-white border border-zinc-200 px-2.5 py-0.5 rounded-lg">
+                                            Richtwert: <span id="heroLivePrice" class="text-red-700">ca. 398 €</span>
+                                        </span>
+                                    </div>
+                                    <input type="range" id="heroScopeSlider" min="1" max="15" step="1" value="2" oninput="updateHeroEstimate()" class="w-full accent-red-700 cursor-pointer">
+                                    <div class="flex justify-between text-[10px] text-zinc-400 mt-0.5">
+                                        <span>1 Tür / Schloss</span>
+                                        <span>6 Türen / Fenster</span>
+                                        <span>15+ (Mehrfamilienhaus / Firma)</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Direkt sichtbare Kontaktfelder (ohne Extra-Klick) -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-zinc-700 mb-1">Ihr Name / Verwaltung *</label>
+                                        <input type="text" name="name" required placeholder="Max Mustermann" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-red-700 focus:bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-zinc-700 mb-1">Telefon oder E-Mail *</label>
+                                        <input type="text" name="contact" required placeholder="0221... oder E-Mail" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-red-700 focus:bg-white">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-zinc-700 mb-1">Kölner Stadtteil / Wunsch (optional)</label>
+                                    <input type="text" name="details" placeholder="z.B. Innenstadt, Abus Panzerriegel oder Schließanlage" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-red-700 focus:bg-white">
+                                </div>
+
+                                <button type="submit" id="heroSubmitBtn" class="w-full bg-red-700 hover:bg-red-800 text-white font-extrabold py-3.5 rounded-xl text-sm transition shadow-md cursor-pointer">
+                                    Unverbindliches Angebot anfragen →
+                                </button>
+
+                                <p class="text-[11px] text-zinc-400 text-center">
+                                    Transparente Festpreise · Fachgeschäft Hahnenstr. 14, 50667 Köln
+                                </p>
+                            </form>
+
+                            <div id="heroSuccessBox" class="hidden bg-emerald-50 border border-emerald-300 text-emerald-900 p-4 rounded-2xl text-sm text-center space-y-2">
+                                <div class="font-extrabold">✅ Anfrage erfolgreich übermittelt!</div>
+                                <p class="text-xs">Vielen Dank! Das Team vom Schlüsselfritze Köln meldet sich kurzfristig mit allen Details bei Ihnen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Laufendes Keyword-Band in Signalrot -->
+            <div class="bg-red-700 text-white py-3 overflow-hidden border-y border-red-800">
+                <div class="animate-marquee text-xs font-extrabold uppercase tracking-widest flex items-center gap-8">
+                    <span>SCHLÜSSELDIENST KÖLN ZUM FESTPREIS</span><span>🔑</span>
+                    <span>EINBRUCHSCHUTZ &amp; PANZERRIEGEL</span><span>🔑</span>
+                    <span>MECHANISCHE &amp; ELEKTRONISCHE SCHLIESSANLAGEN</span><span>🔑</span>
+                    <span>TRESORE &amp; WERTSCHUTZSCHRÄNKE</span><span>🔑</span>
+                    <span>SCHLÜSSELKOPIEN &amp; NACHFERTIGUNG</span><span>🔑</span>
+                    <span>FLUCHT- &amp; RETTUNGSWEGE DIN EN 179</span><span>🔑</span>
+                    <span>ALLE KÖLNER STADTTEILE</span><span>🔑</span>
+                    <!-- Duplikat für nahtlosen Loop -->
+                    <span>SCHLÜSSELDIENST KÖLN ZUM FESTPREIS</span><span>🔑</span>
+                    <span>EINBRUCHSCHUTZ &amp; PANZERRIEGEL</span><span>🔑</span>
+                    <span>MECHANISCHE &amp; ELEKTRONISCHE SCHLIESSANLAGEN</span><span>🔑</span>
+                    <span>TRESORE &amp; WERTSCHUTZSCHRÄNKE</span><span>🔑</span>
+                    <span>SCHLÜSSELKOPIEN &amp; NACHFERTIGUNG</span><span>🔑</span>
+                    <span>FLUCHT- &amp; RETTUNGSWEGE DIN EN 179</span><span>🔑</span>
+                    <span>ALLE KÖLNER STADTTEILE</span><span>🔑</span>
+                </div>
+            </div>
+
+            <!-- Qualifikations- & Festpreis-Leiste -->
+            <section class="py-8 px-4 bg-white border-b border-zinc-200">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-zinc-500">
+                        Geprüfte Sicherheit &amp; Markenqualität
+                    </span>
+                    <div class="flex flex-wrap justify-center gap-3 text-xs font-bold text-zinc-800">
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">🛡️ Seit 2014 verbraucherschutz.de zertifiziert</span>
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">🔒 ABUS &amp; Burg-Wächter Partner</span>
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">💳 Zahlung bar, PayPal oder Rechnung (B2B)</span>
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">📍 Ladenlokal Hahnenstr. 14</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANIMIERTE ERFOLGSZÄHLER -->
+            <section id="countersSection" class="py-14 px-4 bg-zinc-900 text-white border-b border-zinc-800">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Kölner Sicherheitsfachgeschäft</span>
+                        <h2 class="text-2xl md:text-4xl font-extrabold mt-1">Zahlen, auf die Sie sich verlassen können.</h2>
+                        <p class="text-zinc-400 text-sm mt-2">
+                            Wir halten, was andere nur versprechen – mit fest angestellten Fachkräften, eigener Lagerhaltung und klaren Festpreisen.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-amber-400 counter-num" data-target="30" data-suffix="+">0+</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Jahre Erfahrung im Einbruchschutz</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-red-500 counter-num" data-target="148" data-suffix="+">0+</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Geprüfte Google-Bewertungen</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-amber-400 counter-num" data-target="89" data-suffix=" €">0 €</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Festpreis zugefallene Tür (Mo–Fr)</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-red-500 counter-num" data-target="100" data-suffix="%">0%</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Festangestelltes Personal</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unsere Leistungen & Festpreise im Überblick -->
+            <section class="py-16 px-4 bg-white border-b border-zinc-200">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <span class="text-red-700 text-xs font-extrabold uppercase tracking-wider">Unsere Leistungen &amp; Festpreise</span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mt-1">
+                            Sicherheitstechnik, Schließanlagen &amp; Türöffnung
+                        </h2>
+                        <p class="text-zinc-600 text-sm mt-2">
+                            Transparente Konditionen ohne versteckte Kosten – sowohl im Notfall als auch bei der langfristigen Absicherung Ihrer Immobilie.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-700 transition">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-red-700 text-white flex items-center justify-center text-lg mb-4">🚪</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Türöffnung &amp; Schlosstausch</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Zugefallene Tür ab 89 € Festpreis</li>
+                                    <li>• Abgebrochene Schlüssel entfernen</li>
+                                    <li>• Schließzylinder-Tausch inkl. 3 Schlüsseln</li>
+                                </ul>
+                            </div>
+                            <a href="tel:+4922164000435" class="text-xs font-extrabold text-red-700 hover:underline">
+                                Direkt anrufen: 0221 / 64000435 →
+                            </a>
+                        </div>
+
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-700 transition">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-zinc-900 text-amber-400 flex items-center justify-center text-lg mb-4">🛡️</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Einbruchschutz &amp; Panzerriegel</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• ABUS Kastenriegel inkl. Montage (199 €)</li>
+                                    <li>• ABUS Panzerriegel inkl. Montage (399 €)</li>
+                                    <li>• Fenstersicherungen &amp; Pilzkopfbeschläge</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Einbruchschutz & Panzerriegel', 199)" class="text-xs font-extrabold text-red-700 hover:underline">
+                                Direkt oben kalkulieren ↑
+                            </a>
+                        </div>
+
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-700 transition">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-red-700 text-white flex items-center justify-center text-lg mb-4">🔐</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Schließanlagen &amp; Fluchtwege</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Mechanische &amp; elektronische Systeme</li>
+                                    <li>• Für Mehrfamilienhäuser &amp; Gewerbe</li>
+                                    <li>• Antipanikschlösser nach DIN EN 179 / 1125</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Schließanlage & Schlosstausch', 95)" class="text-xs font-extrabold text-red-700 hover:underline">
+                                Direkt oben kalkulieren ↑
+                            </a>
+                        </div>
+
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-700 transition">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-zinc-900 text-amber-400 flex items-center justify-center text-lg mb-4">🗄️</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Tresore &amp; Nachschlüssel</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Wand- &amp; Standtresore inkl. Beratung</li>
+                                    <li>• Schlüsselkopien &amp; Sicherungskarten</li>
+                                    <li>• Fachgeschäft auf der Hahnenstr. 14</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Tresor / Nachschlüssel', 140)" class="text-xs font-extrabold text-red-700 hover:underline">
+                                Direkt oben kalkulieren ↑
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Echte Google-Kundenstimmen & Vertrauen -->
+            <section class="py-16 px-4 bg-zinc-50 border-b border-zinc-200">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-6 space-y-5">
+                        <span class="text-red-700 text-xs font-extrabold uppercase tracking-wider">Echtes Kölner Fachgeschäft · Hahnenstr. 14</span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 leading-tight">
+                            Keine Callcenter, keine Abzocke – echte Kölner Fachleute
+                        </h2>
+                        <p class="text-zinc-600 text-sm md:text-base leading-relaxed">
+                            Beim <strong>Schlüsselfritze</strong> arbeiten ausschließlich fest angestellte Mitarbeiter mit polizeilichem Führungszeugnis und langjähriger Erfahrung in der mechanischen Sicherheitstechnik. Wir sagen Ihnen vorab genau, was es kostet – und liefern saubere, zerstörungsfreie Arbeit.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                            <div class="bg-white border border-zinc-200 rounded-2xl p-4">
+                                <div class="text-lg font-extrabold text-red-700">Festpreis</div>
+                                <div class="text-xs text-zinc-600 mt-1">Inkl. Anfahrt &amp; MwSt.</div>
+                            </div>
+                            <div class="bg-white border border-zinc-200 rounded-2xl p-4">
+                                <div class="text-lg font-extrabold text-red-700">Geprüft</div>
+                                <div class="text-xs text-zinc-600 mt-1">Verbraucherschutz.de</div>
+                            </div>
+                            <div class="bg-white border border-zinc-200 rounded-2xl p-4">
+                                <div class="text-lg font-extrabold text-red-700">Vor Ort</div>
+                                <div class="text-xs text-zinc-600 mt-1">Ladenlokal in Köln-Mitte</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Echte Kundenbewertungen -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-2xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-zinc-900 text-sm">Mathias A. · Google-Bewertung</span>
+                                <span class="text-amber-500 text-xs font-bold">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-zinc-600 leading-relaxed">
+                                „Zum Festpreis die Tür geöffnet, zum verabredeten Zeitpunkt eingetroffen und dazu noch freundlich und kompetent. Was will man mehr? Ich bin happy wieder im Haus.“
+                            </p>
+                        </div>
+
+                        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-2xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-zinc-900 text-sm">Anke Ben Rejeb · Google-Bewertung</span>
+                                <span class="text-amber-500 text-xs font-bold">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-zinc-600 leading-relaxed">
+                                „TOP! Morgens einen Türschlosswechsel angefragt, kurzfristig mit eingeplant worden – Festpreis ohne versteckte Kosten, übersichtliche Homepage und sogar Zahlung per PayPal möglich.“
+                            </p>
+                        </div>
+
+                        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-2xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-zinc-900 text-sm">Caro Dierke · Google-Bewertung</span>
+                                <span class="text-amber-500 text-xs font-bold">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-zinc-600 leading-relaxed">
+                                „Großartig! Schnell, günstig, freundlich! Der Preis ist deutlich günstiger als bei vielen anderen Anbietern und wurde vorab klar kommuniziert.“
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Einsatzgebiet & Interaktives FAQ -->
+            <section class="py-16 px-4 bg-white border-b border-zinc-200">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-10">
+                        <span class="text-red-700 text-xs font-extrabold uppercase tracking-wider">Einsatzgebiet &amp; Häufige Fragen</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 mt-1">In ganz Köln zum gleichen fairen Festpreis</h2>
+                        <div class="flex flex-wrap justify-center gap-2 mt-4 text-xs font-bold">
+                            <span class="bg-red-50 text-red-900 border border-red-200 px-3 py-1 rounded-full">Innenstadt</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Ehrenfeld</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Nippes</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Lindenthal</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Sülz</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Rodenkirchen</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Deutz &amp; Mülheim</span>
+                            <span class="bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full">Chorweiler</span>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Akkordeon -->
+                    <div class="space-y-3 max-w-3xl mx-auto">
+                        <div class="border border-zinc-200 rounded-2xl overflow-hidden">
+                            <button type="button" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-bold text-sm text-zinc-900 flex justify-between items-center bg-zinc-50 hover:bg-zinc-100 transition cursor-pointer">
+                                <span>Welche Kosten kommen bei einer Türöffnung auf mich zu?</span>
+                                <span class="text-red-700 font-extrabold text-lg">+</span>
+                            </button>
+                            <div class="hidden px-5 py-4 text-xs text-zinc-600 leading-relaxed bg-white border-t border-zinc-100">
+                                Bei zugefallenen Türen gilt unser fairer Festpreis ab 89 € (Mo–Fr 7:00–17:00 Uhr) in allen Kölner Stadtteilen – inklusive An- und Abfahrt sowie Mehrwertsteuer. Sollte die Tür abgeschlossen sein, informieren wir Sie vorab transparent über alle Kosten.
+                            </div>
+                        </div>
+
+                        <div class="border border-zinc-200 rounded-2xl overflow-hidden">
+                            <button type="button" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-bold text-sm text-zinc-900 flex justify-between items-center bg-zinc-50 hover:bg-zinc-100 transition cursor-pointer">
+                                <span>Entstehen bei der Öffnung Schäden an der Tür?</span>
+                                <span class="text-red-700 font-extrabold text-lg">+</span>
+                            </button>
+                            <div class="hidden px-5 py-4 text-xs text-zinc-600 leading-relaxed bg-white border-t border-zinc-100">
+                                Nein. Zugefallene oder zugezogene Türen öffnen wir zerstörungsfrei ohne Beschädigung. Selbst wenn bei einer abgeschlossenen Tür der Schließzylinder ersetzt werden muss, bleibt Ihr Türblatt unversehrt.
+                            </div>
+                        </div>
+
+                        <div class="border border-zinc-200 rounded-2xl overflow-hidden">
+                            <button type="button" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-bold text-sm text-zinc-900 flex justify-between items-center bg-zinc-50 hover:bg-zinc-100 transition cursor-pointer">
+                                <span>Planen und montieren Sie auch Schließanlagen und Panzerriegel?</span>
+                                <span class="text-red-700 font-extrabold text-lg">+</span>
+                            </button>
+                            <div class="hidden px-5 py-4 text-xs text-zinc-600 leading-relaxed bg-white border-t border-zinc-100">
+                                Ja! Neben dem Schlüsseldienst sind wir ein klassisches Sicherheitsfachgeschäft mit über 30 Jahren Erfahrung. Wir montieren ABUS Panzerriegel (399 € Festpreis inkl. Montage), Zusatzschlösser (199 €) sowie komplexe Schließanlagen für Wohn- und Gewerbeobjekte.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DIREKTER KONTAKT-ABSCHLUSS UNTEN -->
+            <section class="py-16 px-4 bg-gradient-to-br from-zinc-950 via-zinc-900 to-stone-900 text-white">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-6 space-y-4">
+                        <span class="text-amber-400 text-xs font-extrabold uppercase tracking-wider">Wenn Schlüsseldienst, dann wir!</span>
+                        <h2 class="text-3xl font-extrabold leading-tight">
+                            Direkt Kontakt aufnehmen – in Köln für Sie da
+                        </h2>
+                        <p class="text-zinc-300 text-sm leading-relaxed">
+                            Besuchen Sie unser Fachgeschäft in der Kölner Innenstadt, rufen Sie uns direkt an oder senden Sie uns kurz Ihre Anfrage.
+                        </p>
+                        <div class="space-y-2 text-sm pt-2">
+                            <div>📍 <strong>Geschäft:</strong> Hahnenstr. 14, 50667 Köln</div>
+                            <div>📞 <strong>Telefon:</strong> <a href="tel:+4922164000435" class="text-amber-400 font-extrabold hover:underline">0221 / 64000435</a></div>
+                            <div>✉️ <strong>E-Mail:</strong> <a href="mailto:hallo@schluesselfritze.de" class="text-amber-400 font-extrabold hover:underline">hallo@schluesselfritze.de</a></div>
+                            <div>🕒 <strong>Notdienst:</strong> Täglich 06:00 – 22:00 Uhr</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 bg-white text-zinc-900 rounded-2xl p-6 shadow-xl">
+                        <form id="bottomDirectForm" class="space-y-3">
+                            <div class="font-extrabold text-base text-zinc-900 mb-1">Rückruf oder Beratung zum Einbruchschutz</div>
+                            <input type="text" required placeholder="Ihr Name / Unternehmen *" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-red-700">
+                            <input type="text" required placeholder="Telefonnummer oder E-Mail *" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-red-700">
+                            <textarea rows="2" placeholder="Worum geht es? (z.B. Panzerriegel, Schließanlage, Tresor)" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:border-red-700"></textarea>
+                            <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-extrabold py-3 rounded-xl text-sm transition cursor-pointer">
+                                Jetzt absenden →
+                            </button>
+                        </form>
+                        <div id="bottomSuccess" class="hidden text-center py-4 text-emerald-700 font-bold text-sm">
+                            ✅ Vielen Dank! Das Team vom Schlüsselfritze Köln meldet sich kurzfristig bei Ihnen.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- UNTERSEITE 2: LEISTUNGEN                                  -->
+        <!-- ========================================================= -->
+        <div id="view-leistungen" class="page-view hidden">
+            <section class="py-14 px-4 bg-zinc-900 text-white border-b border-zinc-800">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Unser Leistungsspektrum</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mt-1 mb-4">Sicherheit &amp; Schließtechnik in Köln</h1>
+                    <p class="text-zinc-300 text-base max-w-2xl leading-relaxed">
+                        Von der schnellen Türöffnung zum Festpreis bis zur ganzheitlichen Absicherung von Wohnhäusern und Gewerbeobjekten.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-14 px-4 bg-white">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-zinc-50 border border-zinc-200 p-7 rounded-2xl">
+                        <h3 class="text-xl font-extrabold text-zinc-900 mb-2">🚪 Türöffnung &amp; Schlüsselnotdienst</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">Zerstörungsfreie Öffnung zugefallener Türen ab 89 € Festpreis im gesamten Kölner Stadtgebiet – inkl. Anfahrt und MwSt.</p>
+                        <button type="button" onclick="navigateTo('home')" class="text-xs font-extrabold text-red-700 hover:underline cursor-pointer">Direkt auf der Startseite anfragen →</button>
+                    </div>
+                    <div class="bg-zinc-50 border border-zinc-200 p-7 rounded-2xl">
+                        <h3 class="text-xl font-extrabold text-zinc-900 mb-2">🛡️ Einbruchschutz &amp; Panzerriegel</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">Fachgerechte Montage von ABUS Panzerriegeln (399 €), Kastenriegelschlössern (199 €), Sicherheitszylindern und Fenstersicherungen.</p>
+                        <button type="button" onclick="navigateTo('home')" class="text-xs font-extrabold text-red-700 hover:underline cursor-pointer">Direkt auf der Startseite anfragen →</button>
+                    </div>
+                    <div class="bg-zinc-50 border border-zinc-200 p-7 rounded-2xl">
+                        <h3 class="text-xl font-extrabold text-zinc-900 mb-2">🔐 Schließanlagen &amp; Rettungswege</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">Planung und Montage mechanischer und elektronischer Schließanlagen sowie Antipanikschlösser nach DIN EN 179 und DIN EN 1125.</p>
+                        <button type="button" onclick="navigateTo('home')" class="text-xs font-extrabold text-red-700 hover:underline cursor-pointer">Direkt auf der Startseite anfragen →</button>
+                    </div>
+                    <div class="bg-zinc-50 border border-zinc-200 p-7 rounded-2xl">
+                        <h3 class="text-xl font-extrabold text-zinc-900 mb-2">🗄️ Tresore &amp; Nachschlüssel-Service</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">Beratung und Lieferung geprüfter Stand- und Wandtresore sowie Nachfertigung von Schlüsseln und Schließanlagenschlüsseln nach Sicherungskarte.</p>
+                        <button type="button" onclick="navigateTo('home')" class="text-xs font-extrabold text-red-700 hover:underline cursor-pointer">Direkt auf der Startseite anfragen →</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- UNTERSEITE 3: ÜBER UNS & FESTPREISE                       -->
+        <!-- ========================================================= -->
+        <div id="view-ueber-uns" class="page-view hidden">
+            <section class="py-14 px-4 bg-zinc-900 text-white border-b border-zinc-800">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Köln-Innenstadt · Hahnenstr. 14</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mt-1 mb-4">Über Schlüsselfritze Köln</h1>
+                    <p class="text-zinc-300 text-base max-w-2xl leading-relaxed">
+                        Alteingesessenes Kölner Sicherheitsfachgeschäft mit über 30 Jahren Erfahrung und geprüfter Transparenz.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-14 px-4 bg-white">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <h2 class="text-2xl font-extrabold text-zinc-900">Ehrliches Kölner Handwerk ohne Subunternehmer</h2>
+                        <p class="text-sm text-zinc-600 leading-relaxed">
+                            Beim <strong>Schlüsselfritze</strong> kaufen Sie nicht die Katze im Sack: Wir decken einen Großteil unseres Leistungsspektrums mit klaren, verbindlichen Festpreisen ab und arbeiten ausschließlich mit fest angestellten Sicherheitsfachkräften.
+                        </p>
+                        <p class="text-sm text-zinc-600 leading-relaxed">
+                            Durch unser großes Lager in der Hahnenstraße 14 vermeiden wir lange Lieferzeiten selbst bei speziellen Schlössern für Holz-, Stahl- und Kunststofftüren.
+                        </p>
+                    </div>
+                    <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 space-y-3">
+                        <div class="font-extrabold text-zinc-900">Unsere Qualitäts-Garantien:</div>
+                        <ul class="space-y-2 text-xs font-semibold text-zinc-700">
+                            <li>✓ Seit 2014 zertifiziert durch verbraucherschutz.de</li>
+                            <li>✓ Identischer Festpreis in allen Kölner Stadtteilen</li>
+                            <li>✓ Fest angestellte Mitarbeiter mit Führungszeugnis</li>
+                            <li>✓ Zahlung per Bar, PayPal oder auf Rechnung (Firmen/Verwaltungen)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- UNTERSEITE 4: KONTAKT & RECHTLICHES                       -->
+        <!-- ========================================================= -->
+        <div id="view-kontakt" class="page-view hidden">
+            <section class="py-14 px-4 bg-zinc-900 text-white border-b border-zinc-800">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Köln-Innenstadt</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mt-1 mb-4">Kontakt &amp; Fachgeschäft</h1>
+                    <p class="text-zinc-300 text-base max-w-2xl leading-relaxed">
+                        Rufen Sie uns direkt an oder besuchen Sie uns in unserem Sicherheitsfachgeschäft auf der Hahnenstraße.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-14 px-4 bg-white">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-zinc-50 border border-zinc-200 p-7 rounded-2xl space-y-4">
+                        <h2 class="text-xl font-extrabold text-zinc-900">Schlüsselfritze Köln</h2>
+                        <ul class="space-y-2.5 text-sm text-zinc-700">
+                            <li>📍 <strong>Adresse:</strong> Hahnenstr. 14, 50667 Köln</li>
+                            <li>📞 <strong>Telefon:</strong> <a href="tel:+4922164000435" class="text-red-700 font-extrabold hover:underline">0221 / 64000435</a></li>
+                            <li>✉️ <strong>E-Mail:</strong> <a href="mailto:hallo@schluesselfritze.de" class="text-red-700 font-extrabold hover:underline">hallo@schluesselfritze.de</a></li>
+                            <li>🕒 <strong>Notdienst:</strong> 7 Tage die Woche von 06:00 – 22:00 Uhr</li>
+                        </ul>
+                        <a href="tel:+4922164000435" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-bold py-3.5 rounded-xl text-sm transition">
+                            Jetzt anrufen: 0221 / 64000435
+                        </a>
+                    </div>
+
+                    <div class="bg-zinc-50 border border-zinc-200 p-7 rounded-2xl space-y-3">
+                        <span class="inline-block bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-1 rounded-md">
+                            Rechtliches-Vorschau
+                        </span>
+                        <h2 class="text-xl font-extrabold text-zinc-900">Impressum &amp; Datenschutz</h2>
+                        <p class="text-xs text-zinc-600 leading-relaxed">
+                            Bei Live-Schaltung werden hier Ihre vollständigen Pflichtangaben gemäß § 5 DDG hinterlegt:
+                        </p>
+                        <div class="bg-white border border-zinc-200 rounded-xl p-4 text-xs text-zinc-600 space-y-1">
+                            <div><strong>Schlüsselfritze · Schlüsseldienst &amp; Sicherheitstechnik</strong></div>
+                            <div>Hahnenstr. 14, 50667 Köln</div>
+                            <div>Telefon: 0221 / 64000435</div>
+                            <div>E-Mail: hallo@schluesselfritze.de</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-zinc-950 text-zinc-300 text-sm border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <div class="text-lg font-extrabold text-white">Schlüsselfritze · Schlüsseldienst &amp; Sicherheitstechnik</div>
+                <div class="text-xs text-zinc-400 mt-1">Hahnenstr. 14, 50667 Köln · Tel. 0221 / 64000435 · hallo@schluesselfritze.de</div>
+            </div>
+            <div class="flex flex-wrap gap-4 text-xs font-semibold">
+                <button type="button" onclick="navigateTo('home')" class="hover:text-white transition cursor-pointer">Startseite</button>
+                <button type="button" onclick="navigateTo('leistungen')" class="hover:text-white transition cursor-pointer">Leistungen</button>
+                <button type="button" onclick="navigateTo('ueber-uns')" class="hover:text-white transition cursor-pointer">Über uns</button>
+                <button type="button" onclick="navigateTo('kontakt')" class="hover:text-white transition cursor-pointer">Kontakt &amp; Impressum</button>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-zinc-500">
+            <span>Unverbindlicher Design-Entwurf erstellt von <strong>Local Growth Media</strong> · Köln</span>
+            <span>Demoseite – nicht öffentlich indexiert</span>
+        </div>
+    </footer>
+
+    <script>
+        /* --- 1. Multi-Page Navigation --- */
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('view-' + pageId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.nav === pageId) {
+                    btn.classList.add('bg-red-700', 'text-white', 'shadow-2xs', 'font-bold');
+                    btn.classList.remove('text-zinc-700', 'font-medium');
+                } else {
+                    btn.classList.remove('bg-red-700', 'text-white', 'shadow-2xs', 'font-bold');
+                    btn.classList.add('text-zinc-700', 'font-medium');
+                }
+            });
+
+            document.querySelectorAll('.mob-nav-btn').forEach(btn => {
+                if (btn.dataset.navMob === pageId) {
+                    btn.classList.add('text-white', 'bg-red-700', 'shadow-2xs');
+                    btn.classList.remove('text-zinc-600');
+                } else {
+                    btn.classList.remove('text-white', 'bg-red-700', 'shadow-2xs');
+                    btn.classList.add('text-zinc-600');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* --- 2. Direkt sichtbare Hero-Kontakt- & Live-Preis-Box --- */
+        let heroState = {
+            service: 'Einbruchschutz & Panzerriegel',
+            rate: 199
+        };
+
+        function setHeroService(name, rate, btn) {
+            heroState.service = name;
+            heroState.rate = rate;
+
+            document.querySelectorAll('.hero-srv-btn').forEach(b => {
+                b.className = 'hero-srv-btn border border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-red-400 rounded-xl py-2 px-2 text-center transition cursor-pointer';
+            });
+            btn.className = 'hero-srv-btn border-2 border-red-700 bg-red-50 text-red-950 rounded-xl py-2 px-2 text-center transition cursor-pointer';
+
+            updateHeroEstimate();
+        }
+
+        function presetHeroAndScroll(name, rate) {
+            heroState.service = name;
+            heroState.rate = rate;
+            updateHeroEstimate();
+        }
+
+        function updateHeroEstimate() {
+            const count = parseInt(document.getElementById('heroScopeSlider').value, 10);
+            const label = count === 1 ? '1 Tür / Schloss' : `${count} Türen / Zylinder`;
+            document.getElementById('heroScopeVal').innerText = label;
+            const estimate = Math.max(89, Math.round((count * heroState.rate) / 5) * 5);
+            document.getElementById('heroLivePrice').innerText = 'ca. ' + estimate + ' €';
+            document.getElementById('heroCalcSummary').value = `${heroState.service} | ${label} | Richtwert: ca. ${estimate} €`;
+        }
+        updateHeroEstimate();
+
+        document.getElementById('heroDirectForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('heroSubmitBtn');
+            btn.innerText = 'Wird gesendet...';
+            btn.disabled = true;
+
+            try {
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(Object.fromEntries(new FormData(this)))
+                });
+            } catch (err) {}
+
+            this.classList.add('hidden');
+            document.getElementById('heroSuccessBox').classList.remove('hidden');
+        });
+
+        document.getElementById('bottomDirectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.classList.add('hidden');
+            document.getElementById('bottomSuccess').classList.remove('hidden');
+        });
+
+        /* --- 3. Flüssig animierte Counter --- */
+        let countersAnimated = false;
+
+        function animateCounters() {
+            if (countersAnimated) return;
+            countersAnimated = true;
+
+            document.querySelectorAll('.counter-num').forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1600;
+                const startTime = performance.now();
+
+                function tick(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(eased * target);
+                    el.innerText = current + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.innerText = target + suffix;
+                    }
+                }
+                requestAnimationFrame(tick);
+            });
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.25 });
+
+        const counterSec = document.getElementById('countersSection');
+        if (counterSec) counterObserver.observe(counterSec);
+        setTimeout(animateCounters, 2500);
+
+        /* --- 4. FAQ Akkordeon --- */
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('span:last-child');
+            const isHidden = content.classList.contains('hidden');
+            content.classList.toggle('hidden');
+            icon.innerText = isHidden ? '−' : '+';
+        }
+    </script>
+</body>
+</html>
